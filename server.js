@@ -10,8 +10,17 @@ app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
+app.get('/', function(req, res) {
+  res.render('home')
+})
 
+app.get('/students', function(req, res) {
+  res.render('students')
+});
 
+app.get('/instructors', function(req, res) {
+  res.render('instructors')
+})
 
 
 app.listen(PORT, function(){
