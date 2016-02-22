@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', function(req, res) {
   res.render('home')
-})
+});
 
 app.get('/students', function(req, res) {
   res.render('students')
@@ -20,7 +20,7 @@ app.get('/students', function(req, res) {
 
 app.get('/instructors', function(req, res) {
   res.render('instructors')
-})
+});
 
 
 app.listen(PORT, function(){

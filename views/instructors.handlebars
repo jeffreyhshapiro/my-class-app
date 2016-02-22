@@ -1,0 +1,75 @@
+<h1 class="col-sm-offset-2">Instructor Registration</h1>
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="instructorRegistrationName" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-6">
+      <input type="email" class="form-control" id="inputName3" placeholder="Name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="instructorRegistrationEmail" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-6">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="instructorRegistrationPassword" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-6">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Register</button>
+    </div>
+  </div>
+  <a class="col-sm-offset-2" data-toggle="modal" data-target="#studentLogin">Already a member?</a>
+
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="studentLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Instructor Login</h4>
+      </div>
+      <div class="modal-body">
+      <form>
+          <div class="form-group">
+            <label for="instructorLoginName" class="col-sm-2 control-label">Name</label>
+              <input type="email" class="form-control" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="instructorLoginEmail" class="col-sm-2 control-label">Email</label>
+              <input type="email" class="form-control" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="instructorLoginPassword" class="col-sm-2 control-label">Password</label>
+              <input type="password" class="form-control" placeholder="Password">
+          </div>
+          <div>Are you a TA or a Teacher?</div>
+          <div class="radio">
+            <label><input type="radio" name="radioTA">TA</label> &nbsp; &nbsp;
+            <label><input type="radio" name="radioTA">Teacher</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
