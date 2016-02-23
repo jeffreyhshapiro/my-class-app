@@ -1,22 +1,22 @@
 <h1 class="col-sm-offset-2">Student Registration</h1>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action='/student-register' method="POST">
   <div class="form-group">
     <label for="studentRegistrationName" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-6">
-      <input type="email" class="form-control" id="inputName3" placeholder="Name">
+      <input name="studentNameRegistration" type="text" class="form-control" id="inputName3" placeholder="Name">
     </div>
   </div>
   <div class="form-group">
     <label for="studentRegistrationEmail" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-6">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input name="studentEmailRegistration" type="email" class="form-control" id="inputEmail3" placeholder="Email">
     </div>
   </div>
   <div class="form-group">
     <label for="studentRegistrationPassword" class="col-sm-2 control-label">Password</label>
     <div class="col-sm-6">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      <input name="studentPasswordRegistration" type="password" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
   </div>
   <div class="form-group">
@@ -33,7 +33,7 @@
       <button type="submit" class="btn btn-default">Register</button>
     </div>
   </div>
-  <a class="col-sm-offset-2" data-toggle="modal" data-target="#studentLogin">Already a member?</a>
+  <a class="col-sm-offset-2" data-toggle="modal" data-target="#studentLogin">Already registered?</a>
 
 </form>
 
@@ -48,16 +48,12 @@
       <form>
         <div class="modal-body">
           <div class="form-group">
-            <label for="studentLoginName" class="col-sm-2 control-label">Name</label>
-              <input type="email" class="form-control" placeholder="Name">
-          </div>
-          <div class="form-group">
             <label for="studentLoginEmail" class="col-sm-2 control-label">Email</label>
-              <input type="email" class="form-control" placeholder="Email">
+              <input type="email" name="studentEmailLogin" class="form-control" placeholder="Email">
           </div>
           <div class="form-group">
             <label for="studentLoginPassword" class="col-sm-2 control-label">Password</label>
-              <input type="password" class="form-control" placeholder="Password">
+              <input type="password" name="studentRegistrationLogin" class="form-control" placeholder="Password">
           </div>
         </div>
         <div class="modal-footer">

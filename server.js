@@ -10,6 +10,23 @@ app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
+var connection = new Sequelize('student_teacher_db', 'root');
+
+var studentInfo = connection.define('student_info', {
+  student_name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  student_email: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  student_password: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }
+});
+
 app.get('/', function(req, res) {
   res.render('home')
 });
@@ -18,11 +35,30 @@ app.get('/students', function(req, res) {
   res.render('students')
 });
 
+app.post('/student-register', function(req, res){
+  var studentName = req.body.studentNameRegistration
+  var studentEmail = req.body.studentEmailRegistration
+  var studentPassword = req.body.studentPasswordRegistration
+
+  studentInfo.create({
+    student_name : studentName,
+    student_email : studentEmail,
+    student_password : studentPassword
+  }).then(function(result){
+    res.redirect('/') //make it redirect to a successful login page
+  }).catch(function(err){
+    if (err) {throw err};
+    console.log(err);
+  })
+})
+
 app.get('/instructors', function(req, res) {
   res.render('instructors')
 });
 
 
-app.listen(PORT, function(){
-  console.log('listening on port %s', PORT);
+connection.sync().then(function() {
+  app.listen(PORT, function() {
+      console.log("Listening on:" + PORT)
+  });
 });
