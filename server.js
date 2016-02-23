@@ -78,8 +78,7 @@ app.post('/student-login', function(req, res){
   }).then(function(result){
     console.log(result)
     if (req.body.studentPasswordLogin == result.dataValues.student_password) {
-      res.redirect('/success')
-      console.log('student password ' + result.dataValues.student_password)
+      res.redirect('/student-info')
     } else {
       res.redirect('/err')
     }
@@ -120,8 +119,7 @@ app.post('/instructor-login', function(req, res){
   }).then(function(result){
     console.log(result)
     if (req.body.instructorPasswordLogin == result.dataValues.instructor_password) {
-      res.redirect('/success')
-      console.log('instructor password ' + result.dataValues.instructor_password)
+      res.redirect('/instructor-login')
     } else {
       res.redirect('/err')
     }
@@ -131,9 +129,21 @@ app.post('/instructor-login', function(req, res){
   });
 });
 
-app.get('/success', function(req, res){
-  res.send('login success');
+//success and error routes
+
+app.get('/student-info', function(req, res){
+  studentInfo.findAll({}).then(function(studentsInfo){
+    res.render('student-login', {studentsInfo});
+  });
 });
+
+app.get('/instructor-login', function(req, res){
+  instructorInfo.findAll({}).then(function(instructorsInfo){
+    res.render('instructor-login', {instructorsInfo});
+  });
+});
+
+
 
 app.get('/err', function(req, res){
   res.send('something went wrong');
@@ -141,6 +151,6 @@ app.get('/err', function(req, res){
 
 connection.sync().then(function() {
   app.listen(PORT, function() {
-      console.log("Listening on:" + PORT)
+      console.log("Listening on: " + PORT)
   });
 });

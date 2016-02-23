@@ -1,5 +1,5 @@
 <div class="container">
-<h1>Student Information</h1>
+<h1>Information for Instructors</h1>
 
 <p>Here is a list of the other students in your class, and their email addresses:</p>
 
@@ -8,5 +8,9 @@
 {{/each}}
 
 <p>Here are the instructors in your class, with their email addresses:</p>
+
+{{#each instructorsInfo}}
+<p>{{instructor_name}}  {{instructor_email}}</p>
+{{/each}}
 
 </div>
