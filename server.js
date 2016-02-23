@@ -143,8 +143,6 @@ app.get('/instructor-login', function(req, res){
   });
 });
 
-
-
 app.get('/err', function(req, res){
   res.send('something went wrong');
 });
