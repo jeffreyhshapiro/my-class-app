@@ -27,6 +27,22 @@ var studentInfo = connection.define('student_info', {
   }
 });
 
+var instructorInfo = connection.define('instructor_info', {
+  instructor_name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  instructor_email: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  instructor_password: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }
+});
+
+
 app.get('/', function(req, res) {
   res.render('home')
 });
@@ -53,9 +69,25 @@ app.post('/student-register', function(req, res){
 })
 
 app.get('/instructors', function(req, res) {
-  res.render('instructors')
+  res.render('instructors');
 });
 
+app.post('/instructor-register', function(req,res){
+  var instructorName = req.body.instructorNameRegistration
+  var instructorEmail = req.body.instructorEmailRegistration
+  var instructorPassword = req.body.instructorPasswordRegistration
+
+  instructorInfo.create({
+    instructor_name : instructorName,
+    instructor_email : instructorEmail,
+    instructor_password : instructorPassword
+  }).then(function(result){
+    res.redirect('/') //make it redirect to a successful login page
+  }).catch(function(err){
+    if (err) {throw err};
+    console.log(err);
+  });
+});
 
 connection.sync().then(function() {
   app.listen(PORT, function() {

@@ -1,6 +1,11 @@
-<h1 class="col-sm-offset-2">Instructor Registration</h1>
+<div class="container">
+  <h1 class="col-sm-6">Instructor Registration</h1>
+  <div class="pull-right">
+    <a href="/" class="col-sm-6">Home</a>
+  </div>
+</div>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="/instructor-register" method="POST">
   <div class="form-group">
     <label for="instructorRegistrationName" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-6">
@@ -18,6 +23,13 @@
     <div class="col-sm-6">
       <input type="password" name="instructorPasswordRegistration" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
+  </div>
+  <div class="col-sm-offset-2 col-sm-6">
+    <div>Are you a TA or a Teacher?</div>
+      <div class="checkbox">
+        <label><input type="checkbox" name="instructorTA">TA</label> &nbsp; &nbsp;
+        <label><input type="checkbox" name="instructorTeacher">Teacher</label>
+      </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
@@ -54,11 +66,6 @@
           <div class="form-group">
             <label for="instructorLoginPassword" class="col-sm-2 control-label">Password</label>
               <input type="password" name="instructorPasswordLogin" class="form-control" placeholder="Password">
-          </div>
-          <div>Are you a TA or a Teacher?</div>
-          <div class="radio">
-            <label><input type="radio" name="radioTA">TA</label> &nbsp; &nbsp;
-            <label><input type="radio" name="radioTA">Teacher</label>
           </div>
         </div>
         <div class="modal-footer">
