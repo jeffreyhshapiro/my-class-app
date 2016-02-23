@@ -65,7 +65,11 @@ app.post('/student-register', function(req, res){
   }).catch(function(err){
     if (err) {throw err};
     console.log(err);
-  })
+  });
+});
+
+app.post('/student-login', function(req, res){
+  res.send('this is the student login page')
 })
 
 app.get('/instructors', function(req, res) {
@@ -88,6 +92,10 @@ app.post('/instructor-register', function(req,res){
     console.log(err);
   });
 });
+
+app.post('/instructor-login', function(req, res){
+  res.send('this is the login instructor page')
+})
 
 connection.sync().then(function() {
   app.listen(PORT, function() {

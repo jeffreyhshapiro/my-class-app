@@ -26,15 +26,6 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Remember me
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-default">Register</button>
     </div>
   </div>
@@ -50,7 +41,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Student Login</h4>
       </div>
-      <form>
+      <form action='/student-login' method="POST">
         <div class="modal-body">
           <div class="form-group">
             <label for="studentLoginEmail" class="col-sm-2 control-label">Email</label>
@@ -63,7 +54,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Login</button>
+          <input type="submit" class="btn btn-primary">
         </div>
       </form>
     </div>
