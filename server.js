@@ -47,6 +47,8 @@ app.get('/', function(req, res) {
   res.render('home')
 });
 
+//All routes pertaining to students
+
 app.get('/students', function(req, res) {
   res.render('students')
 });
@@ -69,8 +71,25 @@ app.post('/student-register', function(req, res){
 });
 
 app.post('/student-login', function(req, res){
-  res.send('this is the student login page')
-})
+  studentInfo.findOne({
+    where: {
+      student_email : req.body.studentEmailLogin
+    }
+  }).then(function(result){
+    console.log(result)
+    if (req.body.studentPasswordLogin == result.dataValues.student_password) {
+      res.redirect('/success')
+      console.log('student password ' + result.dataValues.student_password)
+    } else {
+      res.redirect('/err')
+    }
+  }).catch(function(err){
+    if (err) {throw err};
+    console.log(err);
+  });
+});
+
+//All routes pertaining to instructors
 
 app.get('/instructors', function(req, res) {
   res.render('instructors');
@@ -94,8 +113,31 @@ app.post('/instructor-register', function(req,res){
 });
 
 app.post('/instructor-login', function(req, res){
-  res.send('this is the login instructor page')
-})
+  instructorInfo.findOne({
+    where: {
+      instructor_email : req.body.instructorEmailLogin
+    }
+  }).then(function(result){
+    console.log(result)
+    if (req.body.instructorPasswordLogin == result.dataValues.instructor_password) {
+      res.redirect('/success')
+      console.log('instructor password ' + result.dataValues.instructor_password)
+    } else {
+      res.redirect('/err')
+    }
+  }).catch(function(err){
+    if (err) {throw err};
+    console.log(err);
+  });
+});
+
+app.get('/success', function(req, res){
+  res.send('login success');
+});
+
+app.get('/err', function(req, res){
+  res.send('something went wrong');
+});
 
 connection.sync().then(function() {
   app.listen(PORT, function() {
