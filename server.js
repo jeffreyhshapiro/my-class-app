@@ -3,6 +3,7 @@ var app = express();
 var handlebars = require('express-handlebars');
 var Sequelize = require('sequelize');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var PORT = 8000;
 
 app.engine('handlebars', handlebars({defaultLayout: 'main'}));
@@ -11,6 +12,15 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: false }))
 
 var connection = new Sequelize('student_teacher_db', 'root');
+
+app.use(session({
+  secret: 'elm i 8lsdjfklsjflkjsdfjsd',
+  cookie: {
+    maxAge: 60000
+  },
+  saveUninitialized: true,
+  resave: false
+}));
 
 var studentInfo = connection.define('student_info', {
   student_name: {
@@ -42,9 +52,8 @@ var instructorInfo = connection.define('instructor_info', {
   }
 });
 
-
 app.get('/', function(req, res) {
-  res.render('home')
+  res.render('home');
 });
 
 //All routes pertaining to students
@@ -76,8 +85,8 @@ app.post('/student-login', function(req, res){
       student_email : req.body.studentEmailLogin
     }
   }).then(function(result){
-    console.log(result)
-    if (req.body.studentPasswordLogin == result.dataValues.student_password) {
+    if (req.body.studentPasswordLogin === result.dataValues.student_password) {
+      req.session.isAuthenticated = true;
       res.redirect('/student-info')
     } else {
       res.redirect('/err')
@@ -133,7 +142,11 @@ app.post('/instructor-login', function(req, res){
 
 app.get('/student-info', function(req, res){
   studentInfo.findAll({}).then(function(studentsInfo){
-    res.render('student-login', {studentsInfo});
+    if (req.session.isAuthenticated === true) {
+      res.render('student-login', {studentsInfo});
+    } else {
+      res.redirect('/');
+    };
   });
 });
 
